@@ -1,4 +1,4 @@
-package com.annotation.utils;
+package com.annotation.tools;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -22,24 +22,17 @@ public class AnnotationMethodLoader {
 
 	private void annotatedValidator(Class<?> className) {
 		
-		annotationBeforeList = new ArrayList<Method>();
-		annotationAfterList = new ArrayList<Method>();
-		annotationTestList = new ArrayList<Method>();
-		annotationIgnoreList = new ArrayList<Method>();
+		annotationBeforeList 	= new ArrayList<Method>();
+		annotationAfterList 	= new ArrayList<Method>();
+		annotationTestList 		= new ArrayList<Method>();
+		annotationIgnoreList 	= new ArrayList<Method>();
 		
 		for (Method method : className.getDeclaredMethods()) {
-			if (method.isAnnotationPresent(BeforeTests.class)) {
-				annotationBeforeList.add(method);
-			}
-			if (method.isAnnotationPresent(AfterTests.class)) {
-				annotationAfterList.add(method);
-			}
-			if (method.isAnnotationPresent(Ignore.class)) {
-				annotationIgnoreList.add(method);
-			}
-			if (method.isAnnotationPresent(Tests.class) && !method.isAnnotationPresent(Ignore.class)) {
-				annotationTestList.add(method);
-			}
+			if (method.isAnnotationPresent(BeforeTests.class)) annotationBeforeList.add(method);
+			if (method.isAnnotationPresent(AfterTests.class)) annotationAfterList.add(method);
+			if (method.isAnnotationPresent(Ignore.class)) annotationIgnoreList.add(method);
+			if (method.isAnnotationPresent(Tests.class) && !method.isAnnotationPresent(Ignore.class)) annotationTestList.add(method);
+			
 		}
 	}
 

@@ -4,23 +4,23 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import com.annotation.utils.AnnotationMethodLoader;
+import com.annotation.tools.AnnotationMethodLoader;
 
 public class AnnotationService {
 
 	private Object classInstance;
 	private AnnotationMethodLoader annotationMethodLoader;
 
-	void annotationServiceLoader(Class<?> className) {
+	public void annotationServiceLoader(Class<?> className) {
 
 		try {
 			classInstance = className.newInstance();
 			annotationMethodLoader = new AnnotationMethodLoader(className);
 			
-			runnerBeforeList(annotationMethodLoader.getAnnotationBeforeList());
+			runnerList(annotationMethodLoader.getAnnotationBeforeList());
 			runnerTestsList(annotationMethodLoader.getAnnotationTestList());
 			runnerIgnoreList(annotationMethodLoader.getAnnotationIgnoreList());
-			runnerAfterList(annotationMethodLoader.getAnnotationAfterList());
+			runnerList(annotationMethodLoader.getAnnotationAfterList());
 			
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -30,8 +30,8 @@ public class AnnotationService {
 		
 	}
 
-	private void runnerBeforeList(List<Method> annotationBeforeList) {
-		for (Method method : annotationBeforeList) {
+	private void runnerList(List<Method> annotationList) {
+		for (Method method : annotationList) {
 			try {
 				method.invoke(classInstance);
 			} catch (IllegalAccessException e) {
@@ -54,20 +54,6 @@ public class AnnotationService {
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
 				System.out.printf("Test method %s - failed!\n", method.getName());
-			}
-		}
-	}
-
-	private void runnerAfterList(List<Method> annotationAfterList) {
-		for (Method method : annotationAfterList) {
-			try {
-				method.invoke(classInstance);
-			} catch (IllegalAccessException e) {
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				e.printStackTrace();
 			}
 		}
 	}

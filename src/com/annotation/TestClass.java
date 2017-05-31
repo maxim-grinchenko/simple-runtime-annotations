@@ -1,12 +1,11 @@
 package com.annotation;
 
 
-import com.annotation.alist.AfterTests;
 import com.annotation.alist.BeforeTests;
 import com.annotation.alist.Ignore;
 import com.annotation.alist.Tests;
-import com.annotation.utils.Assert;
-import com.annotation.utils.MismatchedData;
+import com.annotation.tools.Assert;
+import com.annotation.tools.MismatchedData;
 
 
 public class TestClass {
@@ -42,13 +41,7 @@ public class TestClass {
         Assert.assertEquals(600, result);
     }
 
-    @AfterTests
-    public void destroy() {
-    	System.out.println("Data utilization");
-        this.a = null;
-        this.b = null;
-        this.c = null;
-    }
+    
     
 }
 
