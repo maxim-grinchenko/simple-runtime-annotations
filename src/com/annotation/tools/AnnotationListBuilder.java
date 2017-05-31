@@ -9,14 +9,14 @@ import com.annotation.alist.BeforeTests;
 import com.annotation.alist.Ignore;
 import com.annotation.alist.Tests;
 
-public class AnnotationMethodLoader {
+public class AnnotationListBuilder {
 
 	private List<Method> annotationBeforeList;
 	private List<Method> annotationAfterList;
 	private List<Method> annotationTestList;
 	private List<Method> annotationIgnoreList;
 	
-	public AnnotationMethodLoader(Class<?> className){
+	public AnnotationListBuilder(Class<?> className){
 		this.annotatedValidator(className);
 	}
 

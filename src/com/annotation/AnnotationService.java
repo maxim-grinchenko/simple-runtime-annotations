@@ -4,23 +4,23 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import com.annotation.tools.AnnotationMethodLoader;
+import com.annotation.tools.AnnotationListBuilder;
 
 public class AnnotationService {
 
 	private Object classInstance;
-	private AnnotationMethodLoader annotationMethodLoader;
+	private AnnotationListBuilder annotationListBuilder;
 
 	public void annotationServiceLoader(Class<?> className) {
 
 		try {
 			classInstance = className.newInstance();
-			annotationMethodLoader = new AnnotationMethodLoader(className);
+			annotationListBuilder = new AnnotationListBuilder(className);
 			
-			runnerList(annotationMethodLoader.getAnnotationBeforeList());
-			runnerTestsList(annotationMethodLoader.getAnnotationTestList());
-			runnerIgnoreList(annotationMethodLoader.getAnnotationIgnoreList());
-			runnerList(annotationMethodLoader.getAnnotationAfterList());
+			runServiceList(annotationListBuilder.getAnnotationBeforeList());
+			runTestsList(annotationListBuilder.getAnnotationTestList());
+			runIgnoreList(annotationListBuilder.getAnnotationIgnoreList());
+			runServiceList(annotationListBuilder.getAnnotationAfterList());
 			
 		} catch (InstantiationException e) {
 			e.printStackTrace();
@@ -30,7 +30,7 @@ public class AnnotationService {
 		
 	}
 
-	private void runnerList(List<Method> annotationList) {
+	private void runServiceList(List<Method> annotationList) {
 		for (Method method : annotationList) {
 			try {
 				method.invoke(classInstance);
@@ -44,7 +44,7 @@ public class AnnotationService {
 		}
 	}
 
-	private void runnerTestsList(List<Method> annotationTestsList) {
+	private void runTestsList(List<Method> annotationTestsList) {
 		for (Method method : annotationTestsList) {
 			try {
 				method.invoke(classInstance);
@@ -58,7 +58,7 @@ public class AnnotationService {
 		}
 	}
 
-	private void runnerIgnoreList(List<Method> annotationIgnoreList) {
+	private void runIgnoreList(List<Method> annotationIgnoreList) {
 		for (Method method : annotationIgnoreList) {
 			System.out.printf("Test method %s - ignored!\n", method.getName());
 		}
