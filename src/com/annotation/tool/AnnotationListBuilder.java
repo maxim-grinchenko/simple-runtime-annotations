@@ -1,4 +1,4 @@
-package com.annotation.tools;
+package com.annotation.tool;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -32,7 +32,6 @@ public class AnnotationListBuilder {
 			if (method.isAnnotationPresent(AfterTests.class)) annotationAfterList.add(method);
 			if (method.isAnnotationPresent(Ignore.class)) annotationIgnoreList.add(method);
 			if (method.isAnnotationPresent(Tests.class) && !method.isAnnotationPresent(Ignore.class)) annotationTestList.add(method);
-			
 		}
 	}
 

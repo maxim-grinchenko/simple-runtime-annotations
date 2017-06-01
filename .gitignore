@@ -14,3 +14,8 @@ bin/com/annotation/utils/MismatchedData.class
 bin/com/annotation/tools/AnnotationMethodLoader.class
 bin/com/annotation/tools/Assert.class
 bin/com/annotation/tools/MismatchedData.class
+bin/com/annotation/tool/AnnotationListBuilder.class
+bin/com/annotation/tool/Assert.class
+bin/com/annotation/tool/MismatchedData.class
+bin/com/annotation/tools/AnnotationListBuilder.class
+bin/com/annotation/tools/AnnotationListBuilder.class

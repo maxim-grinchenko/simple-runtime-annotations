@@ -4,8 +4,8 @@ package com.annotation;
 import com.annotation.alist.BeforeTests;
 import com.annotation.alist.Ignore;
 import com.annotation.alist.Tests;
-import com.annotation.tools.Assert;
-import com.annotation.tools.MismatchedData;
+import com.annotation.tool.Assert;
+import com.annotation.tool.MismatchedData;
 
 
 public class TestClass {

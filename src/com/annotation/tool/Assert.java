@@ -1,4 +1,4 @@
-package com.annotation.tools;
+package com.annotation.tool;
 
 public class Assert {
 
